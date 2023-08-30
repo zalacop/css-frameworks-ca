@@ -10,23 +10,29 @@
     <link rel="stylesheet" href="/dist/css/index.css">
 </head>
 <body>
-    <header class="container d-flex justify-content-sm-evenly my-3">
-        <div class="input-group">
-            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="search" name="search" class="form-control" autocomplete="off" placeholder="">
-        </div>
-        <h1><a href="/feed/index.html">Social Media</a></h1>
-        <div class="dropdown">
-            <img src="/images/avatar-1295395_640.png" alt="penguin profile image" class="dropdown-toggle mw-25" role="button" data-bs-toggle="dropdown">
-                <ul class="dropdown-menu">
-                    <li><a href="/profile/index.html" class="dropdown-item">Profile</a></li>
-                    <li><a href="/index.html" class="dropdown-item">Log out</a></li>
-                </ul>
+    <header class="container text-center align-items-center my-3">
+        <div class="row">
+            <div class="col input-group w-25 h-25 my-auto">
+                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="search" name="search" class="form-control" autocomplete="off" placeholder="">
+            </div>
+            <h1 class="col-6 fs-2 my-auto"><a href="/feed/index.html">Social Media</a></h1>
+            <div class="col dropdown">
+                <img src="/images/avatar-1295395_640.png" alt="penguin profile image" class="dropdown-toggle w-25" role="button" data-bs-toggle="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="/profile/index.html" class="dropdown-item">Profile</a></li>
+                        <li><a href="/index.html" class="dropdown-item">Log out</a></li>
+                    </ul>
+            </div>
         </div>
     </header>
-    <main>
-        <img src="/images/avatar-1295395_640.png" alt="penguin profile image">
-        <h3>Username</h3>
+    <main class="mt-5">
+        <div class="container align-text-bottom gap-5 w-75">
+            <div class="row">
+                <img src="/images/avatar-1295395_640.png" alt="penguin profile image" class="col-1 w-25">
+                <h3 class="col mt-auto">Username</h3>
+            </div>
+        </div>
         <h3>Following</h3>
         <p>0</p>
         <h3>Followers</h3>
