@@ -1,6 +1,9 @@
 @import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+body {
+    background: $light;
+}
 
 header {
     background: $primary;
@@ -34,4 +37,8 @@ h1 a {
 .post img {
     min-width: 150px;
     max-width: 280px;
+}
+
+button {
+    max-width: 100px;
 }
