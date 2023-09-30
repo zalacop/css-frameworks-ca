@@ -3,7 +3,6 @@
 const registerForm = document.querySelector("#register_form");
 const registerEmail = document.querySelector("#register_email");
 const emailError = document.querySelector("#emailError");
-// const username = document.querySelector("#username");
 const registerPassword = document.querySelector("#register_password");
 const passwordError = document.querySelector("#passwordError");
 const repeatPassword = document.querySelector("#repeat_password");
@@ -15,7 +14,7 @@ function validateRegistration (event) {
 
     const isValidEmail = validateEmail(registerEmail.value);
     const isValidPassword = validatePassword(passwordError, registerPassword.value, 7, "Password much have at least 8 characters!");
-    const isMatchingPassword = passwordMatches(repeatError, repeatPassword.value, 7, "Repeat password must be the same as password!");
+    const isMatchingPassword = passwordMatches(repeatError, registerPassword.value, repeatPassword.value, "Repeat password must be the same as password!");
 }
 
 registerForm.addEventListener("submit", validateRegistration);
@@ -49,8 +48,8 @@ function validatePassword(errorType, value, minLength, error) {
     }
 }
 
-function passwordMatches(errorType, value, minLength, error) {
-    if(repeatPassword === registerPassword) {
+function passwordMatches(errorType, password, confirm, error) {
+    if(password === confirm) {
         errorType.style.display = "none";
     } else {
         errorType.innerHTML = `<p>${error}</p>`;
