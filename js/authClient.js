@@ -1,13 +1,13 @@
-import { urlLogin, urlRegister, host, socialEndpoints, authentication, login, register } from "./imports/url";
+import { urlLogin, urlRegister} from "./imports/url.js";
 
-async function registerUser(urlRegister, userRegisterData) {
+async function registerUser(userRegisterData) {
     try {
         const registerData = {
             method: 'POST',
-            body: JSON.stringify(userRegisterData),
             header: {
                 'Content-type': 'application/json',
-            }
+            },
+            body: JSON.stringify(userRegisterData),
         }
         const response = await fetch(urlRegister, registerData);
         console.log(response);
