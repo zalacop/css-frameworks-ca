@@ -1,8 +1,8 @@
-// registration form
-
 const registerForm = document.querySelector("#register_form");
 const registerEmail = document.querySelector("#register_email");
 const emailError = document.querySelector("#emailError");
+const username = document.querySelector("#username");
+const usernameError = document.querySelector("#usernameError")
 const registerPassword = document.querySelector("#register_password");
 const passwordError = document.querySelector("#passwordError");
 const repeatPassword = document.querySelector("#repeat_password");
@@ -13,6 +13,7 @@ function validateRegistration (event) {
     event.preventDefault();
 
     const isValidEmail = validateEmail(registerEmail.value);
+    const isValidUsrname = validateUsername(username.value);
     const isValidPassword = validatePassword(passwordError, registerPassword.value, 7, "Password much have at least 8 characters!");
     const isMatchingPassword = passwordMatches(repeatError, registerPassword.value, repeatPassword.value, "Repeat password must be the same as password!");
 }
@@ -31,6 +32,18 @@ function validateEmail(email) {
         emailError.style.display = "none";
     } else {
         emailError.innerHTML = `<p>Email must be @noroff.no or @stud.noroff.no</p>`
+    }
+}
+
+function validateUsername(user) {
+    const regExUsername = /^[a-z0-9_]{4,20}$/;
+
+    const patternMatchesUsername = regExUsername.test(user);
+
+    if(patternMatchesUsername) {
+        usernameError.style.display = "none";
+    } else {
+        usernameError.innerHTML = `<p>Username must not contain punctuation symbols apart from underscore and must be between 4 and 20 characters!`;
     }
 }
 
@@ -56,27 +69,3 @@ function passwordMatches(errorType, password, confirm, error) {
         return false;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// // login form
-
-// const loginForm = document.querySelector("#login_form");
-// const loginEmail = document.querySelector("#login_email");
-// const loginPassword = document.querySelector("#login_password");
-// const loginButton = document.querySelector("#login_button");
-
-// function validateLogin (event) {
-//     event.preventDefault();
-
-
-// }

@@ -1,5 +1,7 @@
 import { urlLogin, urlRegister} from "./imports/url.js";
 
+const registrationForm = document.querySelector("#register_form");
+
 async function registerUser(userRegisterData) {
     try {
         const registerData = {
