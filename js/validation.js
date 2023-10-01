@@ -21,10 +21,12 @@ function validateAndRegisterUser(event) {
             email: registerEmail.value,
             password: registerPassword.value
         }
+
         const registeredUser = registerUser(user);
-        console.log("hello =) " + registeredUser)
+
+        window.location.replace("/profile/index.html");
     } else {
-        console.log("something went wrong")
+        console.log(error);
     }
 }
 
