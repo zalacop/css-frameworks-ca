@@ -1,3 +1,5 @@
+import { registerUser } from "./authClient.js";
+
 const registerForm = document.querySelector("#register_form");
 const registerEmail = document.querySelector("#register_email");
 const emailError = document.querySelector("#emailError");
@@ -9,17 +11,33 @@ const repeatPassword = document.querySelector("#repeat_password");
 const repeatError = document.querySelector("#repeatError");
 const registerButton = document.querySelector("#register_button");
 
-function validateRegistration (event) {
+function validateAndRegisterUser(event) {
     event.preventDefault();
 
-    const isValidEmail = validateEmail(registerEmail.value);
-    const isValidUsrname = validateUsername(username.value);
-    const isValidPassword = validatePassword(passwordError, registerPassword.value, 7, "Password much have at least 8 characters!");
-    const isMatchingPassword = passwordMatches(repeatError, registerPassword.value, repeatPassword.value, "Repeat password must be the same as password!");
+    if(validateRegistration()) {
+        // if it returns true, call the api to register a user
+        const user = {
+            name: username.value,
+            email: registerEmail.value,
+            password: registerPassword.value
+        }
+        const registeredUser = registerUser(user);
+        console.log("hello =) " + registeredUser)
+    } else {
+        console.log("something went wrong")
+    }
 }
 
-registerForm.addEventListener("submit", validateRegistration);
+registerForm.addEventListener("submit", validateAndRegisterUser);
 
+function validateRegistration() {
+    const isValidEmail = validateEmail(registerEmail.value);
+    const isValidUsername = validateUsername(username.value);
+    const isValidPassword = validatePassword(passwordError, registerPassword.value, 7, "Password much have at least 8 characters!");
+    const isMatchingPassword = passwordMatches(repeatError, registerPassword.value, repeatPassword.value, "Repeat password must be the same as password!");
+
+    return isValidEmail && isValidUsername && isValidPassword && isMatchingPassword;
+}
 
 function validateEmail(email) {
     const regEx1 = /^([a-zA-Z0-9._]+)(@stud\.noroff\.no)$/gm;
@@ -30,8 +48,10 @@ function validateEmail(email) {
 
     if(patternMatches1 || patternMatches2) {
         emailError.style.display = "none";
+        return true;
     } else {
         emailError.innerHTML = `<p>Email must be @noroff.no or @stud.noroff.no</p>`
+        return false;
     }
 }
 
@@ -42,8 +62,10 @@ function validateUsername(user) {
 
     if(patternMatchesUsername) {
         usernameError.style.display = "none";
+        return true;
     } else {
         usernameError.innerHTML = `<p>Username must not contain punctuation symbols apart from underscore and must be between 4 and 20 characters!`;
+        return false;
     }
 }
 
@@ -55,6 +77,7 @@ function checkLength(value, len) {
 function validatePassword(errorType, value, minLength, error) {
     if(checkLength(value, minLength) === true) {
         errorType.style.display = "none";
+        return true;
     } else {
         errorType.innerHTML = `<p>${error}</p>`;
         return false;
@@ -64,6 +87,7 @@ function validatePassword(errorType, value, minLength, error) {
 function passwordMatches(errorType, password, confirm, error) {
     if(password === confirm) {
         errorType.style.display = "none";
+        return true;
     } else {
         errorType.innerHTML = `<p>${error}</p>`;
         return false;
