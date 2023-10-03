@@ -1,4 +1,4 @@
-import { registerUser } from "./authClient.js";
+// import { registerUser } from "./authClient.mjs";
 
 const registerForm = document.querySelector("#register_form");
 const registerEmail = document.querySelector("#register_email");
@@ -11,28 +11,28 @@ const repeatPassword = document.querySelector("#repeat_password");
 const repeatError = document.querySelector("#repeatError");
 const registerButton = document.querySelector("#register_button");
 
-function validateAndRegisterUser(event) {
-    event.preventDefault();
+// function validateAndRegisterUser(event) {
+//     event.preventDefault();
 
-    if(validateRegistration()) {
-        // if it returns true, call the api to register a user
-        const user = {
-            name: username.value,
-            email: registerEmail.value,
-            password: registerPassword.value
-        }
+//     if(validateRegistration()) {
+//         // if it returns true, call the api to register a user
+//         const user = {
+//             name: username.value,
+//             email: registerEmail.value,
+//             password: registerPassword.value
+//         }
 
-        const registeredUser = registerUser(user);
+//         const registeredUser = registerUser(user);
 
-        window.location.replace("/profile/index.html");
-    } else {
-        console.log(error);
-    }
-}
+//         window.location.replace("/profile/index.html");
+//     } else {
+//         console.log(error);
+//     }
+// }
 
-registerForm.addEventListener("submit", validateAndRegisterUser);
+// registerForm.addEventListener("submit", validateAndRegisterUser);
 
-function validateRegistration() {
+export function validateRegistration() {
     const isValidEmail = validateEmail(registerEmail.value);
     const isValidUsername = validateUsername(username.value);
     const isValidPassword = validatePassword(passwordError, registerPassword.value, 7, "Password much have at least 8 characters!");
