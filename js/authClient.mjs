@@ -49,11 +49,9 @@ export async function loginUser(email, password) {
         } else {
             return null;
         }
-      
 
     } catch (error) {
         console.log(error);
-
         return null;
     }
 }

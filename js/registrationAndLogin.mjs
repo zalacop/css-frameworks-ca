@@ -1,5 +1,7 @@
 import { loginUser, registerUser } from "./authClient.mjs";
-import { validateRegistration } from "./registration.mjs";
+import { validateRegistration } from "./validation.mjs";
+
+// Registration
 
 const registerForm = document.querySelector("#register_form");
 const registerEmail = document.querySelector("#register_email");
@@ -27,10 +29,11 @@ function validateAndRegisterUser(event) {
 
 registerForm.addEventListener("submit", validateAndRegisterUser);
 
+// Login
+
 const loginForm = document.querySelector("#login_form");
 const loginEmail = document.querySelector("#login_email");
 const loginPassword = document.querySelector("#login_password");
-
 
 async function processLoginUser(event) {
     event.preventDefault();

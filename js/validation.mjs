@@ -1,5 +1,3 @@
-// import { registerUser } from "./authClient.mjs";
-
 const registerForm = document.querySelector("#register_form");
 const registerEmail = document.querySelector("#register_email");
 const emailError = document.querySelector("#emailError");
@@ -10,27 +8,6 @@ const passwordError = document.querySelector("#passwordError");
 const repeatPassword = document.querySelector("#repeat_password");
 const repeatError = document.querySelector("#repeatError");
 const registerButton = document.querySelector("#register_button");
-
-// function validateAndRegisterUser(event) {
-//     event.preventDefault();
-
-//     if(validateRegistration()) {
-//         // if it returns true, call the api to register a user
-//         const user = {
-//             name: username.value,
-//             email: registerEmail.value,
-//             password: registerPassword.value
-//         }
-
-//         const registeredUser = registerUser(user);
-
-//         window.location.replace("/profile/index.html");
-//     } else {
-//         console.log(error);
-//     }
-// }
-
-// registerForm.addEventListener("submit", validateAndRegisterUser);
 
 export function validateRegistration() {
     const isValidEmail = validateEmail(registerEmail.value);
