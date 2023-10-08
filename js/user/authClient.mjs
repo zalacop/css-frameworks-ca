@@ -1,4 +1,4 @@
-import { urlLogin, urlRegister } from "./imports/url.mjs";
+import { urlLogin, urlRegister } from "../imports/url.mjs"; 
 
 export async function registerUser(userRegisterData) {
     try {
@@ -39,8 +39,7 @@ export async function loginUser(email, password) {
      
         if(response.ok) {
             const data = await response.json();
-            const accessToken = data.accessToken;
-            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('name', data.name);
             localStorage.setItem('email', data.email);
 
