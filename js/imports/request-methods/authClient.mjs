@@ -1,4 +1,4 @@
-import { urlLogin, urlRegister } from "../imports/url.mjs"; 
+import { urlLogin, urlRegister } from "../url.mjs"; 
 
 export async function registerUser(userRegisterData) {
     try {

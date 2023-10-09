@@ -1,5 +1,5 @@
-import { loginUser, registerUser } from "./authClient.mjs";
-import { validateRegistration } from "./validation.mjs"; 
+import { loginUser, registerUser } from "../imports/request-methods/authClient.mjs";
+import { validateRegistration } from "./validation.mjs";
 
 // Registration
 
