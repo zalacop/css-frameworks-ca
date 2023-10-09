@@ -1,13 +1,6 @@
 export default function createHTML(singlePost) {
     const postContainer = document.createElement("div");
     postContainer.classList.add("container", "post", "card", "mb-3");
-    
-    const postCard = document.createElement("div");
-    postCard.classList.add("row");
-
-    const postImage = document.createElement("img");
-    postImage.src = singlePost.image;
-    postImage.classList.add("ol-sm", "w-50", "m-auto", "mt-2");
 
     const postContent = document.createElement("div");
     postContent.classList.add("col-sm", "col-md-3", "card-body");
@@ -42,10 +35,23 @@ export default function createHTML(singlePost) {
     postContent.appendChild(postText);
     postContent.appendChild(interactDiv);
 
+    postContainer.appendChild(postContent);
+    
+    if(singlePost.image !== null && singlePost.image !== "") {
+    const postCard = document.createElement("div");
+    postCard.classList.add("row");
+
+    const postImage = document.createElement("img");
+    postImage.src = singlePost.image;
+    postImage.classList.add("ol-sm", "w-50", "m-auto", "mt-2");
+
     postCard.appendChild(postImage);
     postCard.appendChild(postContent);
 
     postContainer.appendChild(postCard);
 
     return postContainer;
-    }
+    } 
+
+    return postContainer;
+}

@@ -14,7 +14,8 @@ async function getPosts() {
                 "id": post.id,
                 "image": post.media,
                 "title": post.title,
-                "text": post.body
+                "text": post.body,
+                "tags": post.tags
             }
             return postInfo;
         });
@@ -35,7 +36,31 @@ async function postsHTML() {
         const html = postCard(post);
         return postHTML.appendChild(html);
     })
-    
 }
 postsHTML();
 
+const jokeFilter = document.querySelector("#joke");
+
+async function jokeFilterPosts() {
+    try {
+        const getRequest = await getMethod();
+
+        postHTML.innerHTML = ""
+
+        const jokeUrl = urlPosts + "?_tag=joke";
+        const response = await fetch(jokeUrl, getRequest);
+        const jokePosts = await response.json();
+
+        const createJokeHTML = jokePosts.map((post) => {
+          return postCard(post);
+        });
+        
+        createJokeHTML.forEach((post) => {
+            return postHTML.appendChild(post);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+jokeFilter.addEventListener("click", jokeFilterPosts)
