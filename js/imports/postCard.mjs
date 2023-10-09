@@ -5,9 +5,21 @@ export default function createHTML(singlePost) {
     const postContent = document.createElement("div");
     postContent.classList.add("col-sm", "col-md-3", "card-body");
 
+    const postHeader = document.createElement("div");
+    postHeader.classList.add("d-flex", "justify-content-between", "align-items-center");
+
     const postAuthor = document.createElement("p");
     postAuthor.classList.add("fst-italic", "fw-lighter", "fs-6", "mt-0", "card-header", "mb-3");
     postAuthor.innerText = "Post by Unknown author";
+
+    const updateIcons = document.createElement("div");
+    updateIcons.classList.add("d-flex", "gap-3");
+
+    const editIcon = document.createElement("i");
+    editIcon.classList.add("fa-solid", "fa-pen-to-square", "fs-5");
+
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa-solid", "fa-trash", "fs-5")
 
     const postTitle = document.createElement("h5");
     postTitle.classList.add("fs-5");
@@ -15,7 +27,7 @@ export default function createHTML(singlePost) {
 
     const postText = document.createElement("p");
     postText.classList.add("fs-6");
-    postText.innerHTML = singlePost.text;
+    postText.innerHTML = singlePost.text !== undefined ? singlePost.text: "";
 
     const interactDiv = document.createElement("div");
     interactDiv.classList.add("d-flex", "align-items-center", "gap-5", "ms-5");
@@ -30,7 +42,13 @@ export default function createHTML(singlePost) {
     interactDiv.appendChild(heartIcon);
     interactDiv.appendChild(commentBtn);
 
-    postContent.appendChild(postAuthor);
+    postHeader.appendChild(postAuthor);
+    postHeader.appendChild(updateIcons);
+
+    updateIcons.appendChild(editIcon);
+    updateIcons.appendChild(deleteIcon);
+
+    postContent.appendChild(postHeader);
     postContent.appendChild(postTitle);
     postContent.appendChild(postText);
     postContent.appendChild(interactDiv);
@@ -51,7 +69,7 @@ export default function createHTML(singlePost) {
     postContainer.appendChild(postCard);
 
     return postContainer;
-    } 
+    }
 
     return postContainer;
 }

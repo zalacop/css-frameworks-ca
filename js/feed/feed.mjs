@@ -1,31 +1,6 @@
-import { urlPosts } from "../imports/url.mjs";
-import { getMethod } from "../imports/request-methods/get.mjs";
-import postCard from "../imports/postCard.mjs";
-
-async function getPosts() {
-    try {
-        const getRequest = await getMethod();
-
-        const response = await fetch(urlPosts, getRequest);
-        const posts = await response.json();
-
-        const allPosts = posts.map((post) => {
-            const postInfo = {
-                "id": post.id,
-                "image": post.media,
-                "title": post.title,
-                "text": post.body,
-                "tags": post.tags
-            }
-            return postInfo;
-        });
-
-        return allPosts;
-    } catch (error) {
-        console.log(error);
-    }
-}
-getPosts()
+import { getPosts } from "./allPosts.mjs";
+import { jokeFilterPosts } from "../feed/filterFunctions.mjs";
+import createHTML from "../imports/postCard.mjs";
 
 const postHTML = document.querySelector("#post_container");
 
@@ -33,34 +8,24 @@ async function postsHTML() {
     const posts = await getPosts();
 
     const createPostHTML = posts.map((post) => {
-        const html = postCard(post);
+        const html = createHTML(post);
         return postHTML.appendChild(html);
     })
 }
 postsHTML();
 
-const jokeFilter = document.querySelector("#joke");
+const allFilter = document.querySelector("#all");
 
-async function jokeFilterPosts() {
+async function allFilterHTML() {
     try {
-        const getRequest = await getMethod();
-
-        postHTML.innerHTML = ""
-
-        const jokeUrl = urlPosts + "?_tag=joke";
-        const response = await fetch(jokeUrl, getRequest);
-        const jokePosts = await response.json();
-
-        const createJokeHTML = jokePosts.map((post) => {
-          return postCard(post);
-        });
-        
-        createJokeHTML.forEach((post) => {
-            return postHTML.appendChild(post);
-        });
+        postHTML.innerHTML = "";
+        const getRequest = await postsHTML();
+        return getRequest;
     } catch (error) {
         console.log(error);
     }
 }
+allFilter.addEventListener("click", allFilterHTML);
 
-jokeFilter.addEventListener("click", jokeFilterPosts)
+const jokeFilter = document.querySelector("#joke");
+jokeFilter.addEventListener("click", jokeFilterPosts);
