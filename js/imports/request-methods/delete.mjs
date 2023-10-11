@@ -6,7 +6,7 @@ export async function deleteMethod() {
                 'Content-Type': 'application/json',
             },
         }
-
+        
         if(!response.ok) {
             console.log("Failed to delete this post!");
         }

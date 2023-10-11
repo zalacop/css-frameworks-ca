@@ -20,8 +20,6 @@ function validateAndRegisterUser(event) {
         }
 
         const registeredUser = registerUser(user);
-
-        window.location.replace("/profile/index.html");
     } else {
         console.log(error);
     }

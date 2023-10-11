@@ -1,6 +1,6 @@
 export async function putMethod(postID) {
     try {
-        const deleteData = {
+        const putData = {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
