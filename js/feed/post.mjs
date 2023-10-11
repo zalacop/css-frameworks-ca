@@ -1,7 +1,6 @@
 import { urlPosts } from "../imports/url.mjs";
 import { getMethod } from "../imports/request-methods/get.mjs";
-import createHTML from "../imports/postCard.mjs";
-import mapPosts from "./allPosts.mjs";
+import { singlePostHTML } from "../imports/postCard.mjs";
 
 const postHTML = document.querySelector("#post_container");
 
@@ -25,7 +24,7 @@ async function findPost() {
             "tags": post.tags
         };
 
-        const html = createHTML(postStructure);
+        const html = singlePostHTML(postStructure);
         postHTML.appendChild(html);
         postHTML.classList.add("mt-5");
     } catch (error) {

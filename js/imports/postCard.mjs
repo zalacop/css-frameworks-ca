@@ -12,15 +12,6 @@ export default function createHTML(singlePost) {
     postAuthor.classList.add("fst-italic", "fw-lighter", "fs-6", "mt-0", "card-header", "mb-3");
     postAuthor.innerText = "Post by Unknown author";
 
-    const updateIcons = document.createElement("div");
-    updateIcons.classList.add("d-flex", "gap-3");
-
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pen-to-square", "fs-5");
-
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid", "fa-trash", "fs-5")
-
     const postTitle = document.createElement("h5");
     postTitle.classList.add("fs-5");
     postTitle.innerText = singlePost.title;
@@ -43,10 +34,6 @@ export default function createHTML(singlePost) {
     interactDiv.appendChild(commentBtn);
 
     postHeader.appendChild(postAuthor);
-    postHeader.appendChild(updateIcons);
-
-    updateIcons.appendChild(editIcon);
-    updateIcons.appendChild(deleteIcon);
 
     postContent.appendChild(postHeader);
     postContent.appendChild(postTitle);
@@ -71,5 +58,32 @@ export default function createHTML(singlePost) {
     return postContainer;
     }
 
+    return postContainer;
+}
+
+function addPostHeaderIcons(postHeader) {
+    const updateIcons = document.createElement("div");
+    updateIcons.classList.add("d-flex", "gap-3");
+    
+    const editIcon = document.createElement("i");
+    editIcon.classList.add("fa-solid", "fa-pen-to-square", "fs-5");
+    
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa-solid", "fa-trash", "fs-5");
+
+    updateIcons.appendChild(editIcon);
+    updateIcons.appendChild(deleteIcon);
+
+    postHeader.appendChild(updateIcons);
+}
+
+
+export function singlePostHTML(singlePost) {
+    const postContainer = createHTML(singlePost);
+
+    const postContent = postContainer.querySelector(".card-body");
+    const postHeader = postContent.querySelector("div.d-flex.justify-content-between.align-items-center");
+
+    addPostHeaderIcons(postHeader)
     return postContainer;
 }
