@@ -12,6 +12,21 @@ export default function mapPosts(posts) {
         }))
 }
 
+// export async function getPosts() {
+//     try {
+//         const getRequest = await getMethod();
+
+//         const response = await fetch(urlPosts, getRequest);
+//         const posts = await response.json();
+
+//         const allPosts = mapPosts(posts);
+
+//         return allPosts;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+// getPosts();
 
 const postHTML = document.querySelector("#post_container");
 
