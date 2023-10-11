@@ -13,7 +13,6 @@ export default function mapPosts(posts) {
 }
 
 
-
 const postHTML = document.querySelector("#post_container");
 
 export async function filterAndDisplayPosts(tag) {
@@ -38,11 +37,19 @@ export async function filterAndDisplayPosts(tag) {
         const allPosts = mapPosts(posts);
 
         const createPostsHTML = allPosts.map((post) => {
-            return createHTML(post);
+            const postLink = document.createElement("div");
+            postLink.addEventListener("click", () => {
+               window.location.replace(`/feed/post.html?post=${post.id}`
+            )});
+            const postCard = createHTML(post);
+           postLink.appendChild(postCard);
+           postHTML.appendChild(postLink);
+           return postLink
         });
 
         createPostsHTML.forEach((post) => {
             return postHTML.appendChild(post);
+
         });
 
         return allPosts;
@@ -51,3 +58,22 @@ export async function filterAndDisplayPosts(tag) {
     }
 }
 
+export async function withImageFilter() {
+    try {
+        postHTML.innerHTML = "";
+        const posts = await filterAndDisplayPosts("");
+        console.log(posts)
+
+        const filterPostsWithImage = await posts.filter(post => post.image !== null && post.image !== "");
+
+        console.log(filterPostsWithImage)
+
+        const postsWithImageHTML = filterPostsWithImage.map((post) => {
+            const html = createHTML(post);
+            return postHTML.appendChild(html);
+        })
+        console.log(postsWithImageHTML)
+    } catch (error) {
+        console.log(error);
+    }
+}

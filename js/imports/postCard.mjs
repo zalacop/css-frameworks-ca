@@ -61,7 +61,7 @@ export default function createHTML(singlePost) {
 
     const postImage = document.createElement("img");
     postImage.src = singlePost.image;
-    postImage.classList.add("ol-sm", "w-50", "m-auto", "mt-2");
+    postImage.classList.add("col-sm", "w-50", "m-auto", "mt-2");
 
     postCard.appendChild(postImage);
     postCard.appendChild(postContent);
