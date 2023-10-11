@@ -1,4 +1,4 @@
-import { filterAndDisplayPosts, withImageFilter } from "./allPosts.mjs";
+import { filterAndDisplayPosts, withImageFilter } from "./functions.mjs";
 // import createHTML from "../imports/postCard.mjs";
 
 const postHTML = document.querySelector("#post_container");
@@ -38,26 +38,6 @@ const withImageFilterHTML = document.querySelector("#withImage");
 
 filterAndDisplayPosts("");
 
-
-// async function withImageFilter() {
-//     try {
-//         postHTML.innerHTML = "";
-//         const posts = await filterAndDisplayPosts("");
-//         console.log(posts)
-
-//         const filterPostsWithImage = await posts.filter(post => post.image !== null && post.image !== "");
-
-//         console.log(filterPostsWithImage)
-
-//         const postsWithImageHTML = filterPostsWithImage.map((post) => {
-//             const html = createHTML(post);
-//             return postHTML.appendChild(html);
-//         })
-//         console.log(postsWithImageHTML)
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 allFilter.addEventListener("click", () => filterAndDisplayPosts(""))
 jokeFilter.addEventListener("click", () => filterAndDisplayPosts("joke"));

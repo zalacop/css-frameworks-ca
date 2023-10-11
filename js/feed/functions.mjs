@@ -72,6 +72,10 @@ export async function withImageFilter() {
             const html = createHTML(post);
             return postHTML.appendChild(html);
         })
+
+        postsWithImageHTML.forEach((html) => {
+            return postHTML.appendChild(html);
+        })
         console.log(postsWithImageHTML)
     } catch (error) {
         console.log(error);
