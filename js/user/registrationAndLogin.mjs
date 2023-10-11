@@ -20,8 +20,10 @@ function validateAndRegisterUser(event) {
         }
 
         const registeredUser = registerUser(user);
+        return registerForm.innerHTML = `<p>Registration was successful, you can now Log in!</p>`;
     } else {
         console.log(error);
+        return registerForm.innerHTML = `<p>Registration was unsuccessful!</p>`;
     }
 }
 
