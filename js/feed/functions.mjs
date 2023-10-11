@@ -51,14 +51,13 @@ export async function displayPosts(tag) {
            window.location.replace(`/feed/post.html?post=${post.id}`
         )});
         const postCard = createHTML(post);
-       postLink.appendChild(postCard);
-       postHTML.appendChild(postLink);
-       return postLink
+        postLink.appendChild(postCard);
+        postHTML.appendChild(postLink);
+        return postLink;
     });
 
     createPostsHTML.forEach((post) => {
         return postHTML.appendChild(post);
-
     });
     } catch(error) {
         console.log(error)
@@ -73,8 +72,14 @@ export async function withImageFilter() {
         const filterPostsWithImage = await posts.filter(post => post.image !== null && post.image !== "");
 
         const postsWithImageHTML = filterPostsWithImage.map((post) => {
-            const html = createHTML(post);
-            return postHTML.appendChild(html);
+            const postLink = document.createElement("div");
+            postLink.addEventListener("click", () => {
+            window.location.replace(`/feed/post.html?post=${post.id}`
+            )});
+            const postCard = createHTML(post);
+            postLink.appendChild(postCard);
+            postHTML.appendChild(postLink);
+            return postLink;
         });
 
         postsWithImageHTML.forEach((html) => {
