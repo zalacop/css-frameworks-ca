@@ -32,11 +32,13 @@
         <div class="panel d-flex flex-column justify-content-center w-50 m-auto my-4">
             <div class="panel-body">
                 <label for="post" class="mb-2">Create new post</label>
-                <textarea class="form-control" name="post" rows="2" placeholder="Share what's new with you!"></textarea>
-                <div class="d-flex justify-content-between align-items-center my-2 p-2">
+                <input class="form-control mb-2" name="title" id="post_title" rows="1" placeholder="What's the title of your post?" required></textarea>
+                <textarea class="form-control" name="body" id="post_body" rows="2" placeholder="Share what's new with you!" required></textarea>
+                <div class="d-flex align-items-center my-2 p-2 gap-2">
                     <i class="fa-regular fa-image fs-2"></i>
-                    <button class="btn btn-sm btn-secondary px-4 py-2">Post</button>
+                    <input class="form-control-sm" type="text" name="media" id="post_image" placeholder="Add a link to the picture.">
                 </div>
+                <button id="post_btn" class="btn btn-sm btn-secondary px-4 py-2 d-flex justify-content-center">Post</button>
             </div>
         </div>
         <div class="container mb-3 w-75 m-auto">

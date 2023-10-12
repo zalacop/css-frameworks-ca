@@ -70,6 +70,7 @@ function addPostHeaderIcons(postHeader) {
     
     const deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid", "fa-trash", "fs-5");
+    deleteIcon.id = "deleteBtn";
 
     updateIcons.appendChild(editIcon);
     updateIcons.appendChild(deleteIcon);

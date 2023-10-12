@@ -1,4 +1,5 @@
 import { displayPosts, withImageFilter } from "./functions.mjs";
+import newPost from "./createPost.mjs";
 
 
 const postHTML = document.querySelector("#post_container");
@@ -10,8 +11,9 @@ const withImageFilterHTML = document.querySelector("#withImage");
 
 displayPosts("");
 
-
 allFilter.addEventListener("click", () => displayPosts(""))
 jokeFilter.addEventListener("click", () => displayPosts("joke"));
 dogFilter.addEventListener("click",  () => displayPosts("dog"));
 withImageFilterHTML.addEventListener("click", withImageFilter);
+
+// newPost()

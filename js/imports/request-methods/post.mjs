@@ -1,17 +1,15 @@
-export async function deleteMethod(postID) {
+export async function postMethod(data) {
     try {
         const accessToken = localStorage.getItem('accessToken');
-        const deleteData = {
-            method: 'DELETE',
+        const postData = {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${accessToken}`,
             },
+            body: JSON.stringify(data)
         }
-        if(!accessToken) {
-            console.log("User is not authenticated!")
-        }
-        return deleteData;
+        return postData;
     } catch (error) {
         console.log(error);
     }

@@ -1,4 +1,4 @@
-export async function putMethod(postID) {
+export async function putMethod() {
     try {
         const putData = {
             method: 'PUT',
@@ -7,11 +7,6 @@ export async function putMethod(postID) {
             },
         }
 
-        if(!response.ok) {
-            console.log("Failed to delete this post!");
-        }
-
-        // return deleteData;
     } catch (error) {
         console.log(error);
     }

@@ -1,12 +1,17 @@
 import { urlPosts } from "../imports/url.mjs";
 import { getMethod } from "../imports/request-methods/get.mjs";
 import { singlePostHTML } from "../imports/postCard.mjs";
+import { deletePost } from "./deletePost.mjs";
 
 const postHTML = document.querySelector("#post_container");
 
+const deleteButton = document.querySelector("#deleteBtn");
+
+console.log(deleteButton)
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("post");
+console.log(id)
 
 const postURL = urlPosts + "/" + id;
 
@@ -33,3 +38,6 @@ async function findPost() {
 }
 
 findPost()
+
+deletePost
+deleteButton.addEventListener("click", deletePost)
