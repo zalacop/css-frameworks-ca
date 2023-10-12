@@ -1,17 +1,23 @@
 import { urlPosts } from "../imports/url.mjs";
 import { getMethod } from "../imports/request-methods/get.mjs";
-import { singlePostHTML } from "../imports/postCard.mjs";
+import { addNewPost } from "./createPost.mjs";
 import { deletePost } from "./deletePost.mjs";
 
 const postHTML = document.querySelector("#post_container");
-
+const postButton = document.querySelector("#post_btn");
+const title = document.querySelector("#post_title");
+const body = document.querySelector("#post_body");
+const image = document.querySelector("#post_image");
 const deleteButton = document.querySelector("#deleteBtn");
 
-console.log(deleteButton)
+const postContainer = document.querySelector("#postContainer");
+const postCard = document.querySelector("#postCard");
+const postContent = document.querySelector("#postContent");
+const interactDiv = document.querySelector("#interactDiv");
+
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("post");
-console.log(id)
 
 const postURL = urlPosts + "/" + id;
 
@@ -29,15 +35,31 @@ async function findPost() {
             "tags": post.tags
         };
 
-        const html = singlePostHTML(postStructure);
-        postHTML.appendChild(html);
+        function singlePostHTML() {
+            if(postStructure.image !== null && postStructure.image !== "" && postStructure.image !== undefined) {
+                image.src = postStructure.image;
+                postCard.appendChild(image);
+                postCard.appendChild(postContent);
+                postContainer.appendChild(postCard);
+                return postContainer;
+            }
+            title.innerText= postStructure.title;
+            postContent.append(title);
+
+            body.innerText = postStructure.text;
+            postContent.appendChild(body);
+            postContent.appendChild(interactDiv);
+            postCard.appendChild(postContent);
+            postContainer.appendChild(postCard);
+            return postContainer;
+        }
+        singlePostHTML()
         postHTML.classList.add("mt-5");
     } catch (error) {
         console.log(error);
     }
 }
 
-findPost()
+findPost();
 
-deletePost
-deleteButton.addEventListener("click", deletePost)
+deleteButton.addEventListener("click", deletePost);

@@ -4,11 +4,10 @@ import { urlPosts } from "../imports/url.mjs";
 const title = document.querySelector("#post_title");
 const body = document.querySelector("#post_body");
 const image = document.querySelector("#post_image");
-const postButton = document.querySelector("#post_btn");
 
 const postHTML = document.querySelector("#post_container");
 
-export default async function newPost() {
+async function newPost() {
     const postData = {
         title: title.value,
         body: body.value,
@@ -19,22 +18,22 @@ export default async function newPost() {
         const postRequest = await postMethod(postData);
         const response = await fetch(urlPosts, postRequest);
         const json = await response.json();
-        console.log(json)
+        console.log(id)
 
     } catch (error) {
         console.log(error);
     }
 }
 
-async function addNewPost(event) {
+export async function addNewPost(event) {
     event.preventDefault();
-    await newPost();
+    const response = await newPost();
+    const id = response.id;
     const newPostData = {
         title: title.value = '',
         body: body.value = '',
         image: image.value = ''
     }
-    postHTML.innerHTML = ""
+    window.location.replace(`/feed/post.html?post=${id}`);
 }
 
-postButton.addEventListener("click", addNewPost);

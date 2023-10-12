@@ -8,7 +8,6 @@ const postHTML = document.querySelector("#post_container");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("post");
-console.log(id)
 
 const postURL = urlPosts + "/" + id;
 
@@ -19,11 +18,14 @@ export async function deletePost() {
         const response = await fetch(postURL, deleteRequest);
         const json = await response.json();
 
-        if(!response.ok) {
+        if(response.ok) {
+            window.location.replace("/feed/index.html");
+            alert("You successfully deleted this post!");
+        } else {
             console.log("You can't delete this post!");
         }
 
-        // console.log(deleteButton)
+        console.log(response)
         
     } catch (error) {
         console.log(error);

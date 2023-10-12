@@ -60,31 +60,3 @@ export default function createHTML(singlePost) {
 
     return postContainer;
 }
-
-function addPostHeaderIcons(postHeader) {
-    const updateIcons = document.createElement("div");
-    updateIcons.classList.add("d-flex", "gap-3");
-    
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pen-to-square", "fs-5");
-    
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid", "fa-trash", "fs-5");
-    deleteIcon.id = "deleteBtn";
-
-    updateIcons.appendChild(editIcon);
-    updateIcons.appendChild(deleteIcon);
-
-    postHeader.appendChild(updateIcons);
-}
-
-
-export function singlePostHTML(singlePost) {
-    const postContainer = createHTML(singlePost);
-
-    const postContent = postContainer.querySelector(".card-body");
-    const postHeader = postContent.querySelector("div.d-flex.justify-content-between.align-items-center");
-
-    addPostHeaderIcons(postHeader)
-    return postContainer;
-}

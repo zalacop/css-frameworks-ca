@@ -1,4 +1,4 @@
-export async function deleteMethod(postID) {
+export async function deleteMethod(postId) {
     try {
         const accessToken = localStorage.getItem('accessToken');
         const deleteData = {
