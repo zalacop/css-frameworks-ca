@@ -38,13 +38,10 @@ async function findPost() {
         function singlePostHTML() {
             if(postStructure.image !== null && postStructure.image !== "" && postStructure.image !== undefined) {
                 image.src = postStructure.image;
-                postCard.appendChild(image);
-                postCard.appendChild(postContent);
-                postContainer.appendChild(postCard);
-                return postContainer;
             }
+            
             title.innerText= postStructure.title;
-            postContent.append(title);
+            postContent.appendChild(title);
 
             body.innerText = postStructure.text;
             postContent.appendChild(body);

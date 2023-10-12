@@ -9,11 +9,12 @@ const postHTML = document.querySelector("#post_container");
 
 async function newPost() {
     const postData = {
-        // id: id.value,
         title: title.value,
         body: body.value,
         media: image.value
     };
+
+    console.log(postData)
 
     try {
         const postRequest = await postMethod(postData);
