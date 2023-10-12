@@ -33,8 +33,6 @@ export async function editPost(data) {
     }
 }
 
-const imgSrc = document.getElementById("post_image").getAttribute("src");
-
 updateBtn.addEventListener("click", () => {
     const request =  {
         title: title.value,
@@ -42,6 +40,5 @@ updateBtn.addEventListener("click", () => {
         media: image.value,
         tags: tags.value.split(",")
     }
-    console.log(title)
     editPost(request);
 })
