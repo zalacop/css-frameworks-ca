@@ -20,13 +20,9 @@ export async function deletePost() {
 
         if(response.ok) {
             window.location.replace("/feed/index.html");
-            alert("You successfully deleted this post!");
         } else {
             console.log("You can't delete this post!");
         }
-
-        console.log(response)
-        
     } catch (error) {
         console.log(error);
     }

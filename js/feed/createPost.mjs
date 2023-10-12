@@ -9,6 +9,7 @@ const postHTML = document.querySelector("#post_container");
 
 async function newPost() {
     const postData = {
+        // id: id.value,
         title: title.value,
         body: body.value,
         media: image.value
@@ -18,8 +19,7 @@ async function newPost() {
         const postRequest = await postMethod(postData);
         const response = await fetch(urlPosts, postRequest);
         const json = await response.json();
-        console.log(id)
-
+        return json;
     } catch (error) {
         console.log(error);
     }
@@ -29,6 +29,8 @@ export async function addNewPost(event) {
     event.preventDefault();
     const response = await newPost();
     const id = response.id;
+    console.log(response)
+
     const newPostData = {
         title: title.value = '',
         body: body.value = '',
