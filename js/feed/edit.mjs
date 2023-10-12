@@ -1,6 +1,6 @@
 import { urlPosts } from "../imports/url.mjs";
 import { putMethod } from "../imports/request-methods/put.mjs";
-
+import { displayPosts } from "./functions.mjs";
 
 const title = document.querySelector("#post_title");
 const body = document.querySelector("#post_body");
@@ -42,3 +42,10 @@ updateBtn.addEventListener("click", () => {
     }
     editPost(request);
 })
+
+const search = document.querySelector("#search");
+const searchIcon = document.querySelector(".fa-magnifying-glass");
+
+search.addEventListener("keypress", () => displayPosts(search.value));
+searchIcon.addEventListener("click", () => displayPosts(search.value));
+

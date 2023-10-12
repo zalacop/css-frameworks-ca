@@ -1,5 +1,6 @@
 import { getSinglePost } from "../imports/request-methods/get.mjs"
 import { deletePost } from "./deletePost.mjs";
+import { displayPosts } from "./functions.mjs";
 
 const postHTML = document.querySelector("#post_container");
 postHTML.classList.add("mt-5");
@@ -47,8 +48,12 @@ singlePostHTML()
 
 editBtn.addEventListener("click", () => {
     window.location.replace(`/feed/edit.html?post=${id}`);
-    
-
-})
-        
+})     
 deleteButton.addEventListener("click", deletePost);
+
+const search = document.querySelector("#search");
+const searchIcon = document.querySelector(".fa-magnifying-glass");
+
+search.addEventListener("keypress", () => displayPosts(search.value));
+searchIcon.addEventListener("click", () => displayPosts(search.value));
+

@@ -15,7 +15,7 @@ function mapPosts(posts) {
         }))
 }
 
-async function fetchAndFilterPosts(tag) {
+export async function fetchAndFilterPosts(tag) {
     try {
         const getRequest = await getMethod();
 
