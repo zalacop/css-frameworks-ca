@@ -1,13 +1,13 @@
 import { urlPosts } from "../imports/url.mjs";
 import { getMethod } from "../imports/request-methods/get.mjs";
-import { addNewPost } from "./createPost.mjs";
+import { editPost } from "../feed/edit.mjs";
 import { deletePost } from "./deletePost.mjs";
 
 const postHTML = document.querySelector("#post_container");
-const postButton = document.querySelector("#post_btn");
 const title = document.querySelector("#post_title");
 const body = document.querySelector("#post_body");
 const image = document.querySelector("#post_image");
+
 const deleteButton = document.querySelector("#deleteBtn");
 
 const postContainer = document.querySelector("#postContainer");
@@ -36,10 +36,6 @@ async function findPost() {
         };
 
         function singlePostHTML() {
-            if(postStructure.image !== null && postStructure.image !== "" && postStructure.image !== undefined) {
-                image.src = postStructure.image;
-            }
-            
             title.innerText= postStructure.title;
             postContent.appendChild(title);
 
@@ -48,7 +44,16 @@ async function findPost() {
             postContent.appendChild(interactDiv);
             postCard.appendChild(postContent);
             postContainer.appendChild(postCard);
-            return postContainer;
+
+            if(postStructure.image !== null && postStructure.image !== "") {
+                image.src = postStructure.image;
+                
+                postCard.appendChild(image);
+                postCard.appendChild(postContent);
+                postContainer.appendChild(postCard);
+            } else {
+                image.src = "";
+            }
         }
         singlePostHTML()
         postHTML.classList.add("mt-5");
@@ -59,4 +64,17 @@ async function findPost() {
 
 findPost();
 
+
+const imgSrc = document.getElementById("post_image").getAttribute("src");
+
+editBtn.addEventListener("click", () => {
+    const request =  {
+        title: title.innerText,
+        body: body.innerText,
+        media: imgSrc
+    }
+    console.log(request)
+    editPost(request);
+})
+        
 deleteButton.addEventListener("click", deletePost);
