@@ -6,7 +6,7 @@ export default function createHTML(singlePost) {
     postContent.classList.add("col-sm", "col-md-3", "card-body");
 
     const postHeader = document.createElement("div");
-    postHeader.classList.add("d-flex", "justify-content-between", "align-items-center");
+    postHeader.classList.add("d-flex", "w-100");
 
     const postAuthor = document.createElement("p");
     postAuthor.classList.add("fst-italic", "fw-lighter", "fs-6", "mt-0", "card-header", "mb-3");
@@ -48,7 +48,7 @@ export default function createHTML(singlePost) {
 
     const postImage = document.createElement("img");
     postImage.src = singlePost.image;
-    postImage.classList.add("col-sm", "w-50", "m-auto", "mt-2");
+    postImage.classList.add("col-sm", "w-50", "m-auto", "my-2");
 
     postCard.appendChild(postImage);
     postCard.appendChild(postContent);
@@ -56,6 +56,9 @@ export default function createHTML(singlePost) {
     postContainer.appendChild(postCard);
 
     return postContainer;
+    } else {
+        postContent.classList.remove("col-md-3");
+        postContent.classList.add("col-md-10")
     }
 
     return postContainer;
