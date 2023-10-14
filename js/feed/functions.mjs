@@ -28,7 +28,6 @@ export async function fetchAndFilterPosts(tag) {
                 return urlPosts + `?_tag=${tag}`;
             }
         }
-
         const url = buildUrl(tag);
 
         const response = await fetch(url, getRequest);
@@ -60,7 +59,7 @@ export async function displayPosts(tag) {
         return postHTML.appendChild(post);
     });
     } catch(error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
