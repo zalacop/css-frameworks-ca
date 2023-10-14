@@ -50,4 +50,3 @@ const searchIcon = document.querySelector(".fa-magnifying-glass");
 
 search.addEventListener("keypress", () => displayPosts(search.value));
 searchIcon.addEventListener("click", () => displayPosts(search.value));
-
