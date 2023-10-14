@@ -1,5 +1,6 @@
 import { displayPosts, withImageFilter } from "./functions.mjs";
-import {addNewPost} from "./createPost.mjs";
+import { addNewPost } from "./createPost.mjs";
+import logOut from "../logOut.mjs";
 
 const allFilter = document.querySelector("#all");
 const jokeFilter = document.querySelector("#joke");
@@ -9,6 +10,7 @@ const postButton = document.querySelector("#post_btn");
 
 const search = document.querySelector("#search");
 const searchIcon = document.querySelector(".fa-magnifying-glass");
+const logOutButton = document.querySelector("#logOut");
 
 
 displayPosts("");
@@ -23,3 +25,5 @@ withImageFilterHTML.addEventListener("click", withImageFilter);
 
 
 postButton.addEventListener("click", (event) => addNewPost(event));
+
+logOutButton.addEventListener('click', logOut);

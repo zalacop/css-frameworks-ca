@@ -1,6 +1,7 @@
 import { getSinglePost } from "../imports/request-methods/get.mjs"
 import { deletePost } from "./deletePost.mjs";
 import { displayPosts } from "./functions.mjs";
+import logOut from "../logOut.mjs";
 
 const postHTML = document.querySelector("#post_container");
 postHTML.classList.add("mt-5");
@@ -16,6 +17,10 @@ const postContainer = document.querySelector("#postContainer");
 const postCard = document.querySelector("#postCard");
 const postContent = document.querySelector("#postContent");
 const interactDiv = document.querySelector("#interactDiv");
+
+const search = document.querySelector("#search");
+const searchIcon = document.querySelector(".fa-magnifying-glass");
+const logOutButton = document.querySelector("#logOut");
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -51,9 +56,8 @@ editBtn.addEventListener("click", () => {
 })     
 deleteButton.addEventListener("click", deletePost);
 
-const search = document.querySelector("#search");
-const searchIcon = document.querySelector(".fa-magnifying-glass");
 
 search.addEventListener("keypress", () => displayPosts(search.value));
 searchIcon.addEventListener("click", () => displayPosts(search.value));
 
+logOutButton.addEventListener('click', logOut);

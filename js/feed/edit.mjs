@@ -1,6 +1,7 @@
 import { urlPosts } from "../imports/url.mjs";
 import { putMethod } from "../imports/request-methods/put.mjs";
 import { displayPosts } from "./functions.mjs";
+import logOut from "../logOut.mjs";
 
 const title = document.querySelector("#post_title");
 const body = document.querySelector("#post_body");
@@ -8,6 +9,7 @@ const image = document.querySelector("#post_image")
 const tags = document.querySelector("#post_tags");
 
 const updateBtn = document.querySelector("#updateBtn");
+const logOutButton = document.querySelector("#logOut");
 
 
 const queryString = document.location.search;
@@ -16,7 +18,7 @@ const id = params.get("post");
 
 const postURL = urlPosts + "/" + id;
 
-export async function editPost(data) {
+async function editPost(data) {
     try {
         const putRequest = await putMethod(data);
         const response = await fetch(postURL, putRequest);
@@ -50,3 +52,5 @@ const searchIcon = document.querySelector(".fa-magnifying-glass");
 
 search.addEventListener("keypress", () => displayPosts(search.value));
 searchIcon.addEventListener("click", () => displayPosts(search.value));
+
+logOutButton.addEventListener('click', logOut);
