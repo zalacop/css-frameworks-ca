@@ -20,7 +20,7 @@ function validateAndRegisterUser(event) {
         }
 
         const registeredUser = registerUser(user);
-        return registerForm.innerHTML = `<p>Registration was successful, you can now Log in!</p>`;
+        alert("Registration was successful, you can now Log in!");
     } else {
         console.log("Registration was unsuccessful!");
     }
@@ -43,6 +43,7 @@ async function processLoginUser(event) {
        window.location.replace("/profile/index.html"); 
     } else {
         console.log("Login failed");
+        alert("Email or password is incorrect!");
     }
 }
 

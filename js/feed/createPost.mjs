@@ -13,9 +13,7 @@ async function newPost() {
         body: body.value,
         media: image.value
     };
-
-    console.log(postData)
-
+    
     try {
         const postRequest = await postMethod(postData);
         const response = await fetch(urlPosts, postRequest);

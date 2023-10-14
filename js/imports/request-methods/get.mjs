@@ -10,7 +10,6 @@ export async function getMethod() {
                 Authorization: `Bearer ${accessToken}`,
             },
         }
-
         return getData;
     } catch (error) {
         console.log(error);

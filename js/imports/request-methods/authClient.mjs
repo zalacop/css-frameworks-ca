@@ -9,7 +9,6 @@ export async function registerUser(userRegisterData) {
             },
             body: JSON.stringify(userRegisterData),
         }
-
         const response = await fetch(urlRegister, registerData);
         const data = await response.json();
         console.log(data);

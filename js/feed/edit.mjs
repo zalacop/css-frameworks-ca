@@ -23,9 +23,11 @@ export async function editPost(data) {
         const json = await response.json();
 
         if(response.ok) {
+            alert("You successfully updated this post!");
             window.location.replace(`/feed/post.html?post=${id}`);
         } else {
             console.log("You can't update this post!");
+            alert("You can't update this post!");
         }
 
     } catch (error) {
