@@ -1,27 +1,27 @@
 export default function createHTML(singlePost) {
     const postContainer = document.createElement("div");
-    postContainer.classList.add("container", "post", "card", "mb-3");
+    postContainer.classList.add("container", "post", "card", "mb-3", "w-75");
 
     const postContent = document.createElement("div");
-    postContent.classList.add("col-sm", "col-md-3", "card-body");
+    postContent.classList.add("col-sm", "col-md-3", "card-body", "mx-auto");
 
     const postHeader = document.createElement("div");
-    postHeader.classList.add("d-flex", "w-100");
+    postHeader.classList.add("d-flex", "w-100", "d-flex", "justify-content-sm-center", "justify-content-md-start");
 
     const postAuthor = document.createElement("p");
     postAuthor.classList.add("fst-italic", "fw-lighter", "fs-6", "mt-0", "card-header", "mb-3");
     postAuthor.innerText = "Post by Unknown author";
 
     const postTitle = document.createElement("h5");
-    postTitle.classList.add("fs-5");
+    postTitle.classList.add("card-title", "d-flex", "justify-content-sm-center", "justify-content-md-start");
     postTitle.innerText = singlePost.title;
 
     const postText = document.createElement("p");
-    postText.classList.add("fs-6");
+    postText.classList.add("card-text", "d-flex", "justify-content-sm-center", "justify-content-md-start");
     postText.innerHTML = singlePost.text !== undefined ? singlePost.text: "";
 
     const interactDiv = document.createElement("div");
-    interactDiv.classList.add("d-flex", "align-items-center", "gap-5", "ms-5");
+    interactDiv.classList.add("d-flex", "justify-content-sm-center", "justify-content-md-start", "gap-5", "ms-5" , "mx-auto");
 
     const heartIcon = document.createElement("i");
     heartIcon.classList.add("fa-regular", "fa-heart", "fs-2");
@@ -44,7 +44,7 @@ export default function createHTML(singlePost) {
     
     if(singlePost.image !== null && singlePost.image !== "") {
     const postCard = document.createElement("div");
-    postCard.classList.add("row");
+    postCard.classList.add("row", "mx-auto");
 
     const postImage = document.createElement("img");
     postImage.src = singlePost.image;
