@@ -11,8 +11,7 @@ header {
 }
 
 header img {
-    min-width: 55px; 
-    max-width: 25%;
+    max-width: 55px;
 }
 
 .profile-img    {
@@ -30,15 +29,18 @@ h1 a {
     color: $light;
 }
 
+.btn-outline-dark {
+    color: $dark;
+}
+
 .post {
     max-width: 1000px;
 }
 
-.post img {
-    min-width: 150px;
-    max-width: 280px;
+button {
+    max-width: 150px;
 }
 
-button {
-    max-width: 100px;
+.register_input {
+    width: 260px;
 }

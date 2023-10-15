@@ -7,53 +7,63 @@
     <meta name="description" content="Log in to Social Media to meet new friends and share what's happening in your life" />
     <title>Log in | Social Media</title>
     <link rel="stylesheet" href="dist/css/index.css">
+    <script src="js/user/registrationAndLogin.mjs" type="module" defer></script>
 </head>
 <body class="d-flex flex-column justify-content-center align-items-center gap-5">
     <header class="w-100 h-100 d-flex justify-content-center p-2">
         <h1>Social Media</h1>
     </header>
-    <main class="d-flex gap-5">
-        <div class="container d-flex flex-column justify-content-center align-items-center gap-3">
-            <h2>Log in</h2>
-            <form action="/profile" class="d-flex flex-column justify-content-center align-items-center gap-1">
-                <div class="mb-3">
-                    <label for="email" class="mb-2">Email</label>
-                    <input type="email" id="email" class="form-control" autocomplete="off" placeholder="" required />
+    <main class="container">
+        <div class="row w-75 mx-auto">
+            <div class="col-sm col-md-6 mb-4">
+                <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+                    <h2>Log in</h2>
+                    <form action="/profile" id="login_form" class="d-flex flex-column justify-content-center align-items-center gap-1">
+                        <div class="mb-3 register_input">
+                            <label for="email" class="mb-2">Email</label>
+                            <input type="email" id="login_email" class="form-control" autocomplete="off" placeholder="" required />
+                        </div>
+                        <div class="mb-3 register_input">
+                            <label for="password" class="mb-2">Password</label>
+                            <input type="password" id="login_password" class="form-control" minlength="8" autocomplete="off" placeholder="" required />
+                        </div>
+                        <button type="submit" id="login_button" class="btn btn-secondary btn-sm px-4 py-2">Log in</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="mb-2">Password</label>
-                    <input type="password" id="password" class="form-control" minlength="8" autocomplete="off" placeholder="" required />
+            </div>
+            <div class="col-sm col-md-6 mb-4">
+                <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+                    <h2>Register</h2>
+                    <form id="register_form" class="d-flex flex-column justify-content-center align-items-center gap-1">
+                        <div class="mb-3 register_input">
+                            <label for="email" class="mb-2">Email</label>
+                            <input type="email" id="register_email" class="form-control" autocomplete="off" placeholder="" required />
+                            <div id="emailError"></div>
+                        </div>
+                        <div class="mb-3 register_input">
+                            <label for="username" class="mb-2">Username</label>
+                            <input type="text" id="username" class="form-control" autocomplete="off" placeholder="" required />
+                            <div id="usernameError"></div>
+                        </div>
+                        <div class="mb-3 register_input">
+                            <label for="password" class="mb-2">Password</label>
+                            <input type="password" id="register_password" class="form-control" minlength="8" autocomplete="off" placeholder="" required />
+                            <div id="passwordError"></div>
+                        </div>
+                        <div class="mb-3 register_input">
+                            <label for="password" class="mb-2">Repeat password</label>
+                            <input type="password" id="repeat_password" class="form-control" minlength="8" autocomplete="off" placeholder="" required />
+                            <div id="repeatError"></div>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center gap-3">
+                            <input type="checkbox" required>
+                            <p>I agree to Terms & Conditions</p>
+                        </div>
+                        <button type="submit" id="register_button" class="btn btn-secondary btn-sm px-4 py-2">Register</button>
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-secondary btn-sm px-4 py-2">Log in</button>
-            </form>
-        </div>
-        <div class="container d-flex flex-column justify-content-center align-items-center gap-3 mt-5">
-            <h2>Register</h2>
-            <form action="/profile" class="d-flex flex-column justify-content-center align-items-center gap-1">
-                <div class="mb-3">
-                    <label for="email" class="mb-2">Email</label>
-                    <input type="email" id="email" class="form-control" autocomplete="off" placeholder="" required />
-                </div>
-                <div class="mb-3">
-                    <label for="username" class="mb-2">Username</label>
-                    <input type="text" id="username" class="form-control" autocomplete="off" placeholder="" required />
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="mb-2">Password</label>
-                    <input type="password" id="password" class="form-control" minlength="8" autocomplete="off" placeholder="" required />
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="mb-2">Repeat password</label>
-                    <input type="password" id="password" class="form-control" minlength="8" autocomplete="off" placeholder="" required />
-                </div>
-                <div class="mb-3 d-flex align-items-center gap-3">
-                    <input type="checkbox" required>
-                    <p>I agree to Terms & Conditions</p>
-                </div>
-                <button type="submit" class="btn btn-secondary btn-sm px-4 py-2">Log in</button>
-            </form>
+            </div>
         </div>
     </main>
-    <script src="js/index.js"></script>
 </body>
 </html>
