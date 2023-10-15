@@ -29,7 +29,7 @@ function validateEmail(email) {
         emailError.style.display = "none";
         return true;
     } else {
-        emailError.innerHTML = `<p>Email must be @noroff.no or @stud.noroff.no</p>`
+        emailError.innerHTML = `<p class="alert alert-danger">Email must be @noroff.no or @stud.noroff.no</p>`
         return false;
     }
 }
@@ -43,7 +43,7 @@ function validateUsername(user) {
         usernameError.style.display = "none";
         return true;
     } else {
-        usernameError.innerHTML = `<p>Username must not contain punctuation symbols apart from underscore and must be between 4 and 20 characters!`;
+        usernameError.innerHTML = `<p class="alert alert-danger">Username must not contain punctuation symbols apart from underscore and must be between 4 and 20 characters!`;
         return false;
     }
 }
@@ -58,7 +58,7 @@ function validatePassword(errorType, value, minLength, error) {
         errorType.style.display = "none";
         return true;
     } else {
-        errorType.innerHTML = `<p>${error}</p>`;
+        errorType.innerHTML = `<p class="alert alert-danger">${error}</p>`;
         return false;
     }
 }
@@ -68,7 +68,7 @@ function passwordMatches(errorType, password, confirm, error) {
         errorType.style.display = "none";
         return true;
     } else {
-        errorType.innerHTML = `<p>${error}</p>`;
+        errorType.innerHTML = `<p class="alert alert-danger">${error}</p>`;
         return false;
     }
 }
